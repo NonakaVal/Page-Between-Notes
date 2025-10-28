@@ -15,6 +15,16 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        // Inicializar EmailJS com suas credenciais
+        (function() {
+            // Substitua estas credenciais pelas suas do EmailJS
+            emailjs.init("PZiDE9NvPUsrqACAs"); // Sua Public Key do EmailJS
+        })();
+    </script>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -302,6 +312,39 @@
             width: 1.25rem;
             height: 1.25rem;
         }
+
+        /* Estilo para seção de sucesso */
+        #success-section {
+            display: none;
+        }
+
+        #success-section.show {
+            display: block;
+        }
+
+        /* Estilo para a seção do grupo WhatsApp */
+        .whatsapp-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .feature-card {
+            background: rgba(37, 211, 102, 0.1);
+            border: 1px solid rgba(37, 211, 102, 0.3);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .whatsapp-section {
+            background: linear-gradient(135deg, rgba(37, 211, 102, 0.1) 0%, rgba(18, 140, 126, 0.05) 100%);
+            border: 1px solid rgba(37, 211, 102, 0.3);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
     </style>
 </head>
 
@@ -407,6 +450,15 @@
                             </div>
                             <p id="phone-help" class="text-xs text-gray-400 mt-1">Vou usar só pra te adicionar no grupo
                             </p>
+                        </div>
+
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Seu Email (opcional)</label>
+                            <input type="email" id="email" name="email"
+                                class="w-full input-field rounded-xl px-4 py-3 text-white placeholder-gray-500"
+                                placeholder="seu@email.com"
+                                aria-describedby="email-help">
+                            <p id="email-help" class="text-xs text-gray-400 mt-1">Para receber atualizações futuras</p>
                         </div>
 
                         <div class="flex items-start p-3 rounded-xl bg-purple-900/10 border border-purple-800/20">
@@ -576,8 +628,6 @@
                     </p>
                 </div>
 
-
-
                 <div class="glass-card p-8 rounded-2xl card-hover group">
                     <div
                         class="feature-icon w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition">
@@ -613,9 +663,9 @@
     </section>
 
     <!-- Success Section -->
-    <section id="success-section" class="hidden py-24 px-6 md:px-12 bg-gradient-to-b from-dark to-darker">
-        <div class="container mx-auto max-w-4xl">
-            <div class="glass-card p-12 rounded-3xl text-center">
+    <section id="success-section" class="py-24 px-6 md:px-12 bg-gradient-to-b from-dark to-darker hidden">
+        <div class="container mx-auto max-w-6xl">
+            <div class="glass-card p-12 rounded-3xl text-center mb-16">
                 <div class="flex justify-center mb-8">
                     <div
                         class="w-24 h-24 rounded-full bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center">
@@ -657,17 +707,58 @@
                         </p>
                     </div>
                 </div>
+            </div>
 
-                <a href="https://wa.me/5511999999999?text=Olá!%20Acabei%20de%20baixar%20o%20ObsiVault%20e%20gostaria%20de%20participar%20do%20grupo."
-                    target="_blank"
-                    class="btn-whatsapp text-white font-semibold py-5 px-10 rounded-xl inline-flex items-center justify-center text-lg max-w-md mx-auto mb-6 focus:outline-none"
-                    rel="noopener noreferrer">
-                    <i data-feather="message-circle" class="mr-3" aria-hidden="true"></i> Entrar no Grupo do WhatsApp
-                </a>
+            <!-- Seção do Grupo WhatsApp -->
+            <div class="whatsapp-section fade-in">
+                <div class="text-center mb-8">
+                    <div class="flex justify-center mb-6">
+                        <div class="w-20 h-20 rounded-2xl bg-green-900/20 flex items-center justify-center">
+                            <i data-feather="message-circle" class="text-green-400 text-3xl"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4">Entre no nosso Grupo do WhatsApp</h3>
+                    <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+                        Junte-se a mais de 500 pessoas que já estão usando o ObsiVault e trocando experiências
+                    </p>
+                </div>
 
-                <p class="text-sm text-gray-500 max-w-md mx-auto">
-                    Ao entrar no grupo, você concorda com nossas regras de convivência.
-                </p>
+                <div class="whatsapp-features">
+                    <div class="feature-card">
+                        <div class="w-12 h-12 rounded-xl bg-green-900/20 flex items-center justify-center mx-auto mb-4">
+                            <i data-feather="zap" class="text-green-400"></i>
+                        </div>
+                        <h4 class="font-bold mb-2">Suporte Imediato</h4>
+                        <p class="text-gray-300 text-sm">Tire dúvidas diretamente com a comunidade</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="w-12 h-12 rounded-xl bg-green-900/20 flex items-center justify-center mx-auto mb-4">
+                            <i data-feather="lightbulb" class="text-green-400"></i>
+                        </div>
+                        <h4 class="font-bold mb-2">Dicas Exclusivas</h4>
+                        <p class="text-gray-300 text-sm">Aprenda novos truques e workflows</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="w-12 h-12 rounded-xl bg-green-900/20 flex items-center justify-center mx-auto mb-4">
+                            <i data-feather="trending-up" class="text-green-400"></i>
+                        </div>
+                        <h4 class="font-bold mb-2">Atualizações</h4>
+                        <p class="text-gray-300 text-sm">Seja o primeiro a saber das novidades</p>
+                    </div>
+                </div>
+
+                <div class="text-center mt-8">
+                    <a href="https://wa.me/5511999999999?text=Olá!%20Acabei%20de%20baixar%20o%20ObsiVault%20e%20gostaria%20de%20participar%20do%20grupo."
+                        target="_blank"
+                        class="btn-whatsapp text-white font-semibold py-5 px-10 rounded-xl inline-flex items-center justify-center text-lg max-w-md mx-auto mb-4 focus:outline-none"
+                        rel="noopener noreferrer">
+                        <i data-feather="message-circle" class="mr-3" aria-hidden="true"></i> 
+                        Entrar no Grupo do WhatsApp
+                    </a>
+                    <p class="text-sm text-gray-500 max-w-md mx-auto">
+                        Ao entrar no grupo, você concorda com nossas regras de convivência.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -714,6 +805,8 @@
             const closeModal = document.querySelector('.close-modal');
             const phoneInput = document.getElementById('phone');
             const downloadForm = document.getElementById('download-form');
+            const downloadSection = document.getElementById('download');
+            const successSection = document.getElementById('success-section');
 
             // Smooth scroll for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -850,12 +943,35 @@
                 }
             }
 
+            // Função para enviar email via EmailJS
+            async function sendEmail(formData) {
+                try {
+                    // Configurações do EmailJS - SUBSTITUA COM SUAS CREDENCIAIS
+                    const serviceID = 'service_9ksnavu'; // Seu Service ID
+                    const templateID = 'template_td70phi'; // Seu Template ID
+                    
+                    const response = await emailjs.send(serviceID, templateID, {
+                        from_name: formData.name || 'Não informado',
+                        phone: formData.phone,
+                        email: formData.email || 'Não informado',
+                        message: `Novo lead do ObsiVault!\n\nNome: ${formData.name || 'Não informado'}\nWhatsApp: ${formData.phone}\nEmail: ${formData.email || 'Não informado'}\n\nData: ${new Date().toLocaleString('pt-BR')}`,
+                        to_email: 'valdenirnonaka@gmail.com' // Seu email de destino
+                    });
+
+                    return { success: true, data: response };
+                } catch (error) {
+                    console.error('Erro ao enviar email:', error);
+                    return { success: false, error: error };
+                }
+            }
+
             // Form submission
             downloadForm.addEventListener('submit', async function (e) {
                 e.preventDefault();
 
                 const phone = phoneInput.value;
                 const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
 
                 // Validar telefone
                 const cleanedPhone = phone.replace(/\D/g, '');
@@ -873,8 +989,20 @@
                 document.getElementById('form-error').classList.add('hidden');
 
                 try {
-                    // Simular envio do WhatsApp
-                    await new Promise(resolve => setTimeout(resolve, 2000));
+                    // Preparar dados do formulário
+                    const formData = {
+                        name: name,
+                        phone: phone,
+                        email: email,
+                        timestamp: new Date().toISOString()
+                    };
+
+                    // Enviar email via EmailJS
+                    const emailResult = await sendEmail(formData);
+
+                    if (!emailResult.success) {
+                        throw new Error('Falha ao enviar email');
+                    }
 
                     // Mostrar mensagem de sucesso
                     document.getElementById('success-message').textContent = 'Oba! Já te enviei o link no WhatsApp e vou te adicionar no grupo!';
@@ -889,15 +1017,24 @@
                     const subscriberData = {
                         phone: '55' + cleanedPhone,
                         name: name || '',
+                        email: email || '',
                         timestamp: new Date().toISOString()
                     };
                     localStorage.setItem('obsivault_subscriber', JSON.stringify(subscriberData));
 
                     // Mostrar seção de sucesso após 3 segundos
                     setTimeout(() => {
-                        document.getElementById('download').style.display = 'none';
-                        document.getElementById('success-section').classList.remove('hidden');
-                        document.getElementById('success-section').scrollIntoView({ behavior: 'smooth' });
+                        // Esconder a seção de download
+                        downloadSection.style.display = 'none';
+                        
+                        // Mostrar a seção de sucesso
+                        successSection.classList.remove('hidden');
+                        
+                        // Rolar suavemente para a seção de sucesso
+                        successSection.scrollIntoView({ behavior: 'smooth' });
+                        
+                        // Resetar o formulário
+                        downloadForm.reset();
                     }, 3000);
 
                 } catch (error) {
@@ -916,7 +1053,7 @@
 
                 if (isLoading) {
                     btn.disabled = true;
-                    btnText.textContent = 'Te enviando...';
+                    btnText.textContent = 'Enviando...';
                     btnLoading.classList.remove('hidden');
                 } else {
                     btn.disabled = false;
@@ -924,6 +1061,20 @@
                     btnLoading.classList.add('hidden');
                 }
             }
+
+            // Verificar se já existe um subscriber no localStorage
+            function checkExistingSubscriber() {
+                const existingSubscriber = localStorage.getItem('obsivault_subscriber');
+                if (existingSubscriber) {
+                    const subscriberData = JSON.parse(existingSubscriber);
+                    // Se já existe um subscriber, mostrar a seção de sucesso
+                    downloadSection.style.display = 'none';
+                    successSection.classList.remove('hidden');
+                }
+            }
+
+            // Verificar ao carregar a página
+            checkExistingSubscriber();
         });
     </script>
 </body>
