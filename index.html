@@ -9,16 +9,16 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    
+
     <!-- EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
         // Inicializar EmailJS
-        (function() {
+        (function () {
             emailjs.init("PZiDE9NvPUsrqACAs"); // Sua Public Key do EmailJS
         })();
     </script>
-    
+
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -334,6 +334,16 @@
             justify-content: center;
             margin: 0 auto 1.5rem;
         }
+        /* Profile pic pequena centralizada */
+        .profile-pic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            margin: 0 auto;
+            display: block;
+        }
     </style>
 </head>
 
@@ -394,11 +404,15 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <!-- Headline Section -->
                 <div class="fade-in">
+                    <!-- Profile Pic Pequena Centralizada -->
+                    <img src="assets/profire-pic.png"
+                        alt="Profile" class="profile-pic mb-4">
                     <div class="personal-message p-6 rounded-2xl mb-6">
                         <p class="text-gray-200 leading-relaxed">
                             "Oi! Se você já chegou aqui pelo YouTube, muito obrigado pela atenção. Criei esse vault
                             pensando em como organizar melhor minhas ideias e projetos, e quero compartilhar com você.
-                            Caso tenha encontrado essa página de outra forma, segue abaixo o vídeo onde apresento tudo sobre.. "
+                            Caso tenha encontrado essa página de outra forma, segue abaixo o vídeo onde apresento tudo
+                            sobre.. "
                         </p>
                     </div>
 
@@ -415,7 +429,7 @@
 
                 <!-- Form Section -->
                 <div class="glass-card p-8 rounded-3xl fade-in">
-                    
+
                     <form id="download-form" class="space-y-6" novalidate>
                         <div id="form-success"
                             class="hidden bg-gradient-to-r from-green-900/40 to-green-800/20 text-green-300 p-4 rounded-xl text-center border border-green-800/30"
@@ -451,16 +465,17 @@
                                     placeholder="(00) 00000-0000" maxlength="15" aria-required="true"
                                     aria-describedby="phone-help">
                             </div>
-                            <p id="phone-help" class="text-xs text-gray-400 mt-1">Vou usar só pra te adicionar na nossa comunidade
+                            <p id="phone-help" class="text-xs text-gray-400 mt-1">Vou usar só pra te adicionar na nossa
+                                comunidade
                             </p>
                         </div>
 
                         <div>
-                            <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Seu Email (opcional)</label>
+                            <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Seu Email
+                                (opcional)</label>
                             <input type="email" id="email" name="email"
                                 class="w-full input-field rounded-xl px-4 py-3 text-white placeholder-gray-500"
-                                placeholder="seu@email.com"
-                                aria-describedby="email-help">
+                                placeholder="seu@email.com" aria-describedby="email-help">
                             <p id="email-help" class="text-xs text-gray-400 mt-1">Para receber atualizações futuras</p>
                         </div>
 
@@ -647,7 +662,8 @@
     </section>
 
     <!-- Success Section -->
-    <section id="success-section" class="py-24 px-6 md:px-12 bg-gradient-to-b from-dark to-darker" style="display: none;">
+    <section id="success-section" class="py-24 px-6 md:px-12 bg-gradient-to-b from-dark to-darker"
+        style="display: none;">
         <div class="container mx-auto max-w-6xl">
             <!-- Mensagem de Agradecimento Principal -->
             <div class="thank-you-message fade-in">
@@ -663,14 +679,13 @@
                 <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
                     Agora você faz parte da nossa comunidade! 🚀
                 </p>
-                
+
                 <!-- Call-to-Action Principal para o WhatsApp -->
                 <div class="text-center">
-                    <a href="https://chat.whatsapp.com/SEU_LINK_DO_GRUPO_AQUI"
-                        target="_blank"
+                    <a href="https://chat.whatsapp.com/SEU_LINK_DO_GRUPO_AQUI" target="_blank"
                         class="btn-whatsapp text-white font-bold py-4 px-8 rounded-xl inline-flex items-center justify-center mb-4 focus:outline-none hover:scale-105 transition-transform text-lg"
                         rel="noopener noreferrer">
-                        <i data-feather="message-circle" class="mr-3 text-xl" aria-hidden="true"></i> 
+                        <i data-feather="message-circle" class="mr-3 text-xl" aria-hidden="true"></i>
                         ENTRAR NO GRUPO DO WHATSAPP
                     </a>
                     <p class="text-sm text-gray-400 max-w-md mx-auto">
@@ -679,7 +694,7 @@
                 </div>
             </div>
 
-            </div>
+        </div>
         </div>
     </section>
 
@@ -852,7 +867,7 @@
                 try {
                     const serviceID = 'service_9ksnavu'; // Seu Service ID
                     const templateID = 'template_td70phi'; // Seu Template ID
-                    
+
                     const response = await emailjs.send(serviceID, templateID, {
                         from_name: formData.name || 'Não informado',
                         phone: formData.phone,
@@ -929,13 +944,13 @@
                     setTimeout(() => {
                         // Esconder a seção de download
                         downloadSection.style.display = 'none';
-                        
+
                         // Mostrar a seção de sucesso
                         successSection.style.display = 'block';
-                        
+
                         // Rolar suavemente para a seção de sucesso
                         successSection.scrollIntoView({ behavior: 'smooth' });
-                        
+
                         // Resetar o formulário
                         downloadForm.reset();
                     }, 3000);
