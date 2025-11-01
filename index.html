@@ -20,7 +20,7 @@
     </script>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Sans:wght@200..800&display=swap');
 
         :root {
             --primary: #7e57c2;
@@ -36,7 +36,7 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: "Momo Trust Sans", sans-serif;
             background-color: var(--darker);
             color: white;
             scroll-behavior: smooth;
@@ -661,17 +661,19 @@
             </li>
         </ul>
     </div>
-    
+
     <!-- Logo Section -->
-    <section class="logo-section bg-gradient-to-b from-dark via-darker to-dark">
+    <section class="logo-section bg-gradient-to-b from-dark via-darker to-dark py-10">
         <img src="assets/between-notes-dark.svg" alt="Logo Between Notes"
-            class="mx-auto w-72 md:w-96 drop-shadow-2xl transition-transform duration-500 hover:scale-105">
-        <div class="logo-text">
-            <p class="text-gray-300 text-lg md:text-xl text-responsive">
-                Conecte ideias, aprenda de forma intencional e transforme suas anotações em conhecimento vivo ✨
+            class="mx-auto w-80 md:w-[39rem] drop-shadow-2xl transition-transform duration-500 hover:scale-105">
+        <div class="logo-text mt-6">
+            <p class="text-gray-300 text-xl md:text-2xl text-center max-w-2xl mx-auto">
+                <strong>Conecte ideias, aprenda de forma intencional e transforme suas anotações em conhecimento
+                    vivo.</strong>
             </p>
         </div>
     </section>
+
 
     <!-- Download Section -->
     <section id="download" class="section-padding px-6 md:px-12 bg-gradient-to-br from-darker via-dark to-darker">
@@ -693,13 +695,7 @@
                                 class="text-blue-400 underline hover:text-blue-300">YouTube</a>,
                             <strong>muito obrigado</strong> pela atenção!
                         </p>
-
-                        <p class="text-gray-300 mt-4 text-left">
-                            Fiz esse vault para organizar minhas ideias e agora quero
-                            <strong>compartilhar com você</strong>.
-                        </p>
-
-                        <p class="text-gray-300 mt-4 text-center font-semibold">
+                        <p class="text-gray-300 mt-4 text-left font-semibold">
                             Seu formulário para download está logo abaixo 👇 ou ao lado 👉
                         </p>
 
@@ -785,8 +781,9 @@
                         <!-- Botão -->
                         <button type="submit" id="submit-btn"
                             class="btn-primary text-white font-semibold py-4 px-6 rounded-xl w-full flex items-center justify-center relative focus:outline-none">
-                            <i data-feather="message-circle" class="mr-2" aria-hidden="true"></i>
-                            <span id="btn-text">Enviar e Baixar Obsidian Starter Template</span>
+                            <i data-feather="download" class="mr-2" aria-hidden="true"></i>
+                            <span id="btn-text">Baixar Template</span>
+                            
                             <div id="btn-loading" class="hidden ml-2" aria-hidden="true">
                                 <div class="loading-spinner rounded-full border-2 border-white border-t-transparent">
                                 </div>
